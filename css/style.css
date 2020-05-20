@@ -3,8 +3,16 @@
   padding: 0;
   box-sizing: border-box; }
 
+body {
+  background-color: #e6e6e6; }
+
 h1 {
-  text-align: center; }
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: underline;
+  font-style: italic;
+  font-family: cursive;
+  color: #888888; }
 
 .full-container {
   margin: 0 auto;
