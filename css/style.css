@@ -37,7 +37,7 @@ h1 {
   display: flex;
   margin-bottom: 20px;
   padding: 10px;
-  background-color: grey; }
+  background-color: #c7c7c7; }
   .add-new-input input {
     width: 600px;
     margin-right: 10px;
