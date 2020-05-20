@@ -7,13 +7,14 @@ addButton.addEventListener('click', addNewTextElement);
 todoList.addEventListener('click', listButtons);
 inputText.addEventListener('keyup', countInput);
 
+let myStorage = JSON.parse(localStorage.getItem('todos'));
+for (let i = 0; i < myStorage.length; i++){
+    addNewTextElement(myStorage[i].text, myStorage[i].status)
+};
 
+function addNewTextElement(text, status = false) {
 
-
-
-function addNewTextElement() {
-
-    if (inputText.value === '') return;
+    if (!inputText.value && !text) return;
 
     const newLi = document.createElement('li');
     const newRemoveButton = document.createElement('button');
@@ -23,7 +24,12 @@ function addNewTextElement() {
     newLi.classList.add('todo-list-item');
 
     newSpan.classList.add('todo-result');
-    newSpan.innerText = inputText.value;
+
+    if(inputText.value){
+        newSpan.innerText = inputText.value;
+    } else {
+        newSpan.innerText = text;
+    }
 
     newRemoveButton.classList.add('remove');
     newRemoveButton.innerText = 'x';
@@ -32,6 +38,15 @@ function addNewTextElement() {
     newCheckbox.classList.add('status');
     newCheckbox.type ='checkbox';
     newCheckbox.dataset.action = 'checked';
+    newCheckbox.checked = status;
+
+    myStorage === null ? myStorage = [] : myStorage;
+    
+    myStorage.push({
+        name: inputText.value,
+        status: status,
+    });
+    localStorage.setItem('todos', JSON.stringify(myStorage))
 
     todoList.append(newLi);
 
@@ -40,9 +55,8 @@ function addNewTextElement() {
     newLi.append(newRemoveButton);
     
     inputText.value = '';
-    counter.innerText = 'Characters counting: 0'
+    counter.innerText = 'Characters counting: 0' 
 }
-
 
 function listButtons(event){
     if(event.target.dataset.action === 'remove'){
@@ -52,7 +66,6 @@ function listButtons(event){
         event.target.closest('li').classList.toggle('complete')
     }
 };
-
 
 function countInput(){
     let inputNum = inputText.value.length;
