@@ -4,51 +4,102 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url('./pictures/bj.jpeg');
+h1 {
+    text-align: center;
+}
+.full-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    
+   
+}
+
+.todo-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 40px;
+    margin-top: 150px;
+    background-image: url("../pictures/bg-container.jpg");
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: cover;
 }
 
 .add-new-input {
+    justify-content: space-between;
+    width: 670px;
     display: flex;
-    justify-content: center;
-    margin: 40px 0;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: grey;
     
     input {
-        width: 400px;
+        width: 600px;
         margin-right: 10px;
         height: 30px;
     }
     button {
+        cursor: pointer;
         width: 50px;
+        margin: 0;
     }
 }
 
-.todo-list {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+.counter{
+    margin-bottom: 30px;
+}
 
-    ul {
-        list-style: none;
-        .todo-list-item {
-            display: flex;
-            width: 460px;
-            height: 40px;
-            border: 1px solid rgb(0, 0, 0);
-            justify-content: space-between;
-            align-items: center;
-            margin: 5px 10px;
-        }
-        .status {
-            margin-left: 10px;
-        }
-        .remove {
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-        }
+.todo-list {  
+    list-style: none;
+}
+
+.todo-list-item {
+    margin-bottom: 10px;
+    background-color: rgb(214, 214, 214);
+    display: flex;
+    width: 670px;
+    height: auto;
+    border: 1px solid rgb(0, 0, 0);
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.todo-result {
+    font-size: 20px;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    width: 500px;
+    
+}
+.status {
+    cursor: pointer;
+    margin: 0 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 25px;
+}
+
+.remove {
+    margin: 0 20px;
+    width: 20px;
+    height: 20px;
+    border: rgb(95, 93, 93) 1px solid;
+    border-radius: 25px;
+    cursor: pointer;
+    &:hover{
+        background-color: rgb(253, 133, 133);
+        border: red 1px solid;
+        color: red;
+        font-weight: bold;
     }
+}
+
+.complete {
+    background-color: rgb(159, 209, 159);
+    border: 2px green solid;
+    color: rgba(0, 0, 0, 0.329);
 }

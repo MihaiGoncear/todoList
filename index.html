@@ -7,23 +7,19 @@
     <title>todo-list</title>
 </head>
 <body>
+    <h1>ToDo List Online</h1>
     <div class="full-container">
-        <h1>Hello World!!</h1>
-        <div class="todo-container">
-            <div class="add-new-input">
-                <input type="text" placeholder="Add todo">
-                <button>Add</button>
+       
+        <div id="todo-container" class="todo-container">
+            <div id="add-new-input" class="add-new-input">
+                <input id="input-text" type="text" placeholder="Add todo">
+                <button id="add-button">Add</button>
             </div>
-            <div class="todo-list">
-                <ul>
-                    <li class="todo-list-item">
-                        <input class="status" type="checkbox">
-                        <span class="todo-result">test</span>
-                        <button class="remove">x</button>
-                    </li>
-                </ul>
-            </div>
+            <span id="counter" class="counter">Characters counting: 0</span>
+            <ul id="todo-list" class="todo-list"></ul>
         </div>
     </div>  
+    <script src="script.js"></script>
 </body>
+
 </html>
