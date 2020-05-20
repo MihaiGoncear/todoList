@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('./pictures/bj.jpeg');
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
+}
+
+.add-new-input {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    
+    input {
+        width: 400px;
+        margin-right: 10px;
+        height: 30px;
+    }
+    button {
+        width: 50px;
+    }
+}
+
+.todo-list {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    ul {
+        list-style: none;
+        .todo-list-item {
+            display: flex;
+            width: 460px;
+            height: 40px;
+            border: 1px solid rgb(0, 0, 0);
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 10px;
+        }
+        .status {
+            margin-left: 10px;
+        }
+        .remove {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
