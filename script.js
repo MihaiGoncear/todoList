@@ -86,9 +86,9 @@ function listButtons(event){
         myNewStorageArray =[];
         for(let i = 0; i <= myStorage.length; i++){
             if(listDataId !== myStorage[i].id){
-                myNewStorageArray.push(listDataId)
+                myNewStorageArray.push(myStorage[i])
             }
-            localStorage.setItem('todos', JSON.stringify(myNewStorageArray))
+            localStorage.setItem('todos', JSON.stringify(myNewStorageArray));
         }
         
     }
