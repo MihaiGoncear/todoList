@@ -2,6 +2,7 @@ let inputText = document.getElementById('input-text');
 let addButton = document.getElementById('add-button');
 let todoList = document.getElementById('todo-list');
 let counter = document.getElementById('counter');
+let listItem = document.getElementById('todo-list-item');
 
 let myStorage = getTodosFromLocalStorage();
 myStorage === null ? myStorage = [] : myStorage;
@@ -33,7 +34,7 @@ function addNewTextElement(text, status = false) {
     const newSpan = document.createElement('span');
 
     newLi.classList.add('todo-list-item');
-
+    newLi.setAttribute('id', 'todo-list-item')
     newSpan.classList.add('todo-result');
 
     if(inputText.value){
@@ -51,12 +52,14 @@ function addNewTextElement(text, status = false) {
     newCheckbox.dataset.action = 'checked';
     newCheckbox.checked = status;
 
+    console.log(newLi)
     newLi.append(newCheckbox);
     newLi.append(newSpan);
     newLi.append(newRemoveButton);
     
     let myStorage = getTodosFromLocalStorage();
     myStorage.push({
+        id: myStorage.length,
         text: inputText.value,
         status: status,
     });
@@ -67,9 +70,23 @@ function addNewTextElement(text, status = false) {
     todoList.append(newLi);
 }
 
+function setIdByDataset(){
+    let dataIdSet = document.getElementsByClassName('todo-list-item');
+    Array.from(dataIdSet).forEach(function(ele, i) {
+        ele.setAttribute("data-id", (i));
+      });
+}
+setIdByDataset()
+
 function listButtons(event){
+    let listDataId = listItem.getAttribute("data-id")
     if(event.target.dataset.action === 'remove'){
         event.target.closest('li').remove();
+        for(let i = 0; i <= myStorage.length; i++){
+            if(listDataId === myStorage[i].id){
+                localStorage.removeItem
+            }
+        }
     }
     if(event.target.dataset.action === 'checked'){
         event.target.closest('li').classList.toggle('complete')
@@ -84,3 +101,4 @@ function countInput(){
         counter.innerText = `Characters counting: 0`;
     };
 };
+

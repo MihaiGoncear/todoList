@@ -26,6 +26,7 @@ h1 {
   border: 2px solid black;
   padding: 40px;
   margin-top: 150px;
+  margin-bottom: 150px;
   background-image: url("../pictures/bg-container.jpg");
   background-repeat: no-repeat;
   background-position: center;
