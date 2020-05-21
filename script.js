@@ -51,7 +51,6 @@ function addNewTextElement(text, status = false) {
     newCheckbox.dataset.action = 'checked';
     newCheckbox.checked = status;
 
-    console.log(newLi)
     newLi.append(newCheckbox);
     newLi.append(newSpan);
     newLi.append(newRemoveButton);
@@ -83,11 +82,15 @@ function listButtons(event){
     let listDataId = listItem.getAttribute("data-id")
     if(event.target.dataset.action === 'remove'){
         event.target.closest('li').remove();
+
+        myNewStorageArray =[];
         for(let i = 0; i <= myStorage.length; i++){
-            if(listDataId === myStorage[i].id){
-                localStorage.removeItem
+            if(listDataId !== myStorage[i].id){
+                myNewStorageArray.push(listDataId)
             }
+            localStorage.setItem('todos', JSON.stringify(myNewStorageArray))
         }
+        
     }
     if(event.target.dataset.action === 'checked'){
         event.target.closest('li').classList.toggle('complete')
