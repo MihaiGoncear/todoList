@@ -2,7 +2,6 @@ let inputText = document.getElementById('input-text');
 let addButton = document.getElementById('add-button');
 let todoList = document.getElementById('todo-list');
 let counter = document.getElementById('counter');
-let listItem = document.getElementById('todo-list-item');
 
 let myStorage = getTodosFromLocalStorage();
 myStorage === null ? myStorage = [] : myStorage;
@@ -77,6 +76,8 @@ function setIdByDataset(){
       });
 }
 setIdByDataset()
+
+let listItem = document.getElementById('todo-list-item');
 
 function listButtons(event){
     let listDataId = listItem.getAttribute("data-id")
