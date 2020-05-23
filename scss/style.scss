@@ -75,6 +75,14 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
+
+    input {
+        cursor: pointer;
+        margin: 0 20px;
+        width: 20px;
+        height: 20px;
+        border-radius: 25px;
+    }
 }
 
 .todo-result {
@@ -84,13 +92,7 @@ h1 {
     width: 500px;
     
 }
-.status {
-    cursor: pointer;
-    margin: 0 20px;
-    width: 20px;
-    height: 20px;
-    border-radius: 25px;
-}
+
 
 .remove {
     margin: 0 20px;
