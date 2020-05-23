@@ -87,10 +87,14 @@ h1 {
 
 .todo-result {
     font-size: 20px;
-    text-transform: capitalize;
+    
     word-wrap: break-word;
     width: 500px;
     
+}
+
+.todo-result::first-letter{
+    text-transform: uppercase;
 }
 
 
