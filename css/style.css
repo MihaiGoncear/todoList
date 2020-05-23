@@ -75,9 +75,8 @@ h1 {
   font-size: 20px;
   word-wrap: break-word;
   width: 500px; }
-
-.todo-result::first-letter {
-  text-transform: uppercase; }
+  .todo-result::first-letter {
+    text-transform: uppercase; }
 
 .remove {
   margin: 0 20px;

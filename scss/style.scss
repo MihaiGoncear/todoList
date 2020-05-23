@@ -90,14 +90,12 @@ h1 {
     
     word-wrap: break-word;
     width: 500px;
-    
+
+    &::first-letter{
+            text-transform: uppercase;
+        }
 }
-
-.todo-result::first-letter{
-    text-transform: uppercase;
-}
-
-
+   
 .remove {
     margin: 0 20px;
     width: 20px;
