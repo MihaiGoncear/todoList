@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-sass":"node-sass scss -o css",
+    "build-sass": "node-sass scss -o css",
     "watch-sass": "node-sass --watch scss -o css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
