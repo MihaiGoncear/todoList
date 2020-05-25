@@ -149,10 +149,11 @@ h1 {
         padding: 20px;
         margin-top: 75px;
         margin-bottom: 75px;
+        width: 90%;
     }
     
     .add-new-input {
-        width: 400px;
+        width: 100%;
         margin-bottom: 15px;
         padding: 5px;
         
@@ -175,7 +176,7 @@ h1 {
     
     .todo-list-item {
         margin-bottom: 5px;
-        width: 400px;
+        width: 100%;
         padding: 5px 0;
         input {
             margin: 0 5px;
@@ -184,7 +185,7 @@ h1 {
     
     .todo-result {
         font-size: 12px;
-        width: 345px;
+        width: 80%;
     }
        
     .remove {
