@@ -1,118 +1,119 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: rgb(230, 230, 230);
-}
+@import "reset";
+@import "mixin";
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    font-style: italic;
-    font-family: cursive;
-    color: rgb(107, 107, 107);
-    font-size: 40px;
-}
-.full-container {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    
-   
-}
 
-.todo-container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    border: 2px solid black;
-    padding: 40px;
-    margin-top: 150px;
-    margin-bottom: 150px;
-    background-image: url("../pictures/bg-container.jpg");
-    background-repeat: no-repeat; 
-    background-position: center; 
-    background-size: cover;
-}
-
-.add-new-input {
-    justify-content: space-between;
-    width: 670px;
-    display: flex;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: rgb(199, 199, 199);
-    
-    input {
-        width: 600px;
-        margin-right: 10px;
-        height: 30px;
+@include isDesktop {
+    body{
+        background-color: rgb(230, 230, 230);
     }
-    button {
-        cursor: pointer;
-        width: 50px;
-        margin: 0;
+    
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        font-style: italic;
+        font-family: cursive;
+        color: rgb(107, 107, 107);
+        font-size: 40px;
     }
-}
-
-.counter{
-    margin-bottom: 30px;
-}
-
-.todo-list {  
-    list-style: none;
-}
-
-.todo-list-item {
-    margin-bottom: 10px;
-    background-color: rgb(214, 214, 214);
-    display: flex;
-    width: 670px;
-    height: auto;
-    border: 1px solid rgb(0, 0, 0);
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-
-    input {
-        cursor: pointer;
+    .full-container {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        
+       
+    }
+    
+    .todo-container {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        border: 2px solid black;
+        padding: 40px;
+        margin-top: 150px;
+        margin-bottom: 150px;
+        background-image: url("../pictures/bg-container.jpg");
+        background-repeat: no-repeat; 
+        background-position: center; 
+        background-size: cover;
+    }
+    
+    .add-new-input {
+        justify-content: space-between;
+        width: 670px;
+        display: flex;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: rgb(199, 199, 199);
+        
+        input {
+            width: 600px;
+            margin-right: 10px;
+            height: 30px;
+        }
+        button {
+            cursor: pointer;
+            width: 50px;
+            margin: 0;
+        }
+    }
+    
+    .counter{
+        margin-bottom: 30px;
+    }
+    
+    .todo-list {  
+        list-style: none;
+    }
+    
+    .todo-list-item {
+        margin-bottom: 10px;
+        background-color: rgb(214, 214, 214);
+        display: flex;
+        width: 670px;
+        height: auto;
+        border: 1px solid rgb(0, 0, 0);
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+    
+        input {
+            cursor: pointer;
+            margin: 0 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 25px;
+        }
+    }
+    
+    .todo-result {
+        font-size: 20px;
+        
+        word-wrap: break-word;
+        width: 500px;
+    
+        &::first-letter{
+                text-transform: uppercase;
+            }
+    }
+       
+    .remove {
         margin: 0 20px;
         width: 20px;
         height: 20px;
+        border: rgb(95, 93, 93) 1px solid;
         border-radius: 25px;
-    }
-}
-
-.todo-result {
-    font-size: 20px;
-    
-    word-wrap: break-word;
-    width: 500px;
-
-    &::first-letter{
-            text-transform: uppercase;
+        cursor: pointer;
+        &:hover{
+            background-color: rgb(253, 133, 133);
+            border: red 1px solid;
+            color: red;
+            font-weight: bold;
         }
-}
-   
-.remove {
-    margin: 0 20px;
-    width: 20px;
-    height: 20px;
-    border: rgb(95, 93, 93) 1px solid;
-    border-radius: 25px;
-    cursor: pointer;
-    &:hover{
-        background-color: rgb(253, 133, 133);
-        border: red 1px solid;
-        color: red;
-        font-weight: bold;
     }
-}
-
-.complete {
-    background-color: rgb(159, 209, 159);
-    border: 2px green solid;
-    color: rgba(0, 0, 0, 0.329);
+    
+    .complete {
+        background-color: rgb(159, 209, 159);
+        border: 2px green solid;
+        color: rgba(0, 0, 0, 0.329);
+    }
 }

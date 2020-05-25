@@ -9,108 +9,97 @@ setTodosToLocalStorage(myStorage);
 
 function getTodosFromLocalStorage() {
     return JSON.parse(localStorage.getItem('todos'));
-}
+};
 
-function setTodosToLocalStorage(todos){
+function setTodosToLocalStorage(todos) {
     localStorage.setItem('todos', JSON.stringify(todos))
-}
+};
 
-addButton.addEventListener('click', addNewTextElement);
+addButton.addEventListener('click', handleAddTodoItem);
 todoList.addEventListener('click', listButtons);
 inputText.addEventListener('keyup', countInput);
 
-for (let i = 0; i < myStorage.length; i++){
-    addNewTextElement(myStorage[i].text, myStorage[i].status, myStorage[i].id)
+for (let i = 0; i < myStorage.length; i++) {
+    renderTodoItem(myStorage[i].text, myStorage[i].status, myStorage[i].id)
 };
 
-function addNewTextElement(text, status = false, id) {
+function handleAddTodoItem() {
+    if (!inputText.value) return;
+    let myStorage = getTodosFromLocalStorage();
+    let id = myStorage.length;
 
-    if (!inputText.value && !text) return;
+    myStorage.push({
+        id: id,
+        text: inputText.value,
+        status: false,
+    });
+
+    setTodosToLocalStorage(myStorage);
+    renderTodoItem(inputText.value, false, id);
+    inputText.value = '';
+    counter.innerText = 'Characters counting: 0';
+}
+
+function renderTodoItem(text, status, id) {
 
     const newLi = document.createElement('li');
-    const newRemoveButton = document.createElement('button');
-    const newCheckbox = document.createElement('input');
-    const newSpan = document.createElement('span');
-
     newLi.classList.add('todo-list-item');
-    
+    status ? newLi.classList.toggle('complete') : null
 
-    newSpan.classList.add('todo-result');
-
-    if(inputText.value){
-        newSpan.innerText = inputText.value;
-    } else {
-        newSpan.innerText = text;
-    }
-
+    const newRemoveButton = document.createElement('button');
     newRemoveButton.classList.add('remove');
     newRemoveButton.innerText = 'x';
     newRemoveButton.dataset.action = 'remove';
 
-    
-    newCheckbox.type ='checkbox';
+    const newCheckbox = document.createElement('input');
+    newCheckbox.type = 'checkbox';
     newCheckbox.setAttribute('data-action', 'checked');
-    status ? newLi.classList.toggle('complete') : null
     newCheckbox.checked = status;
+
+    const newSpan = document.createElement('span');
+    newSpan.classList.add('todo-result');
+    newSpan.innerText = text;
+
+    todoList.append(newLi);
 
     newLi.append(newCheckbox);
     newLi.append(newSpan);
     newLi.append(newRemoveButton);
-    
-    let itemId = id;
-    let myStorage = getTodosFromLocalStorage();
-    
-    if(inputText.value){
-        let id = myStorage.length;
-
-        myStorage.push({
-            id: id,
-            text: inputText.value,
-            status: false,
-        });
-        itemId = myStorage.length
-        setTodosToLocalStorage(myStorage);
-    }
-
-    newLi.setAttribute('data-todoid', itemId);
-
-    inputText.value = '';
-    counter.innerText = 'Characters counting: 0' 
-    todoList.append(newLi);
+    newLi.setAttribute('data-todoid', id);
 }
 
-
-function listButtons(event){
+function listButtons(event) {
 
     let myStorage = getTodosFromLocalStorage();
     const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
-    if(event.target.dataset.action === 'remove'){
+    if (event.target.dataset.action === 'remove') {
         let newStorageArray = [];
-        for(let i = 0; i < myStorage.length; i++){
-            if(itemId !== myStorage[i].id){
+        for (let i = 0; i < myStorage.length; i++) {
+            if (itemId !== myStorage[i].id) {
                 newStorageArray.push(myStorage[i]);
             }
         }
-    setTodosToLocalStorage(newStorageArray);
-    event.target.closest('li').remove();
-    }
-    if(event.target.dataset.action === 'checked'){
+        setTodosToLocalStorage(newStorageArray);
+        event.target.closest('li').remove();
+    };
+
+    if (event.target.dataset.action === 'checked') {
         let newStorageArray = [];
-        for(let i = 0; i < myStorage.length; i++){
-            if(itemId === myStorage[i].id){
+        for (let i = 0; i < myStorage.length; i++) {
+            if (itemId === myStorage[i].id) {
                 myStorage[i].status = !myStorage[i].status;
             }
             newStorageArray.push(myStorage[i]);
         }
-    setTodosToLocalStorage(newStorageArray);
-    event.target.closest('li').classList.toggle('complete');
-    }
+        setTodosToLocalStorage(newStorageArray);
+        event.target.closest('li').classList.toggle('complete');
+    };
 };
 
-function countInput(){
+function countInput() {
     let inputNum = inputText.value.length;
-    if (inputNum >= 1){
+    if (inputNum >= 1) {
         counter.innerText = 'Characters counting: ' + inputNum;
     } else {
         counter.innerText = `Characters counting: 0`;

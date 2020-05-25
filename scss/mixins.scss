@@ -1,0 +1,15 @@
+$desktop: 769px;
+$telephone-min: 100px;
+$telephone-max: 768px;
+
+@mixin isDesktop {
+    @media screen and (min-width: $desktop )   {
+        @content;
+    } 
+}
+
+@mixin isTelephone {
+    @media screen and (min-width: $telephone-min) and (max-width: $telephone-max){
+        @content;
+    }
+}
