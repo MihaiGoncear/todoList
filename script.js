@@ -73,10 +73,11 @@ function renderTodoItem(text, status, id) {
 // let statusButton = document.querySelectorAll('[data-action="checked"]');
 
 function removeFunc(event) {
+    let button = event.target.getAttribute('data-action');
     let myStorage = getTodosFromLocalStorage();
     const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
-    if (event.target.dataset.action === 'remove') {
+    if (button === 'remove') {
         let newStorageArray = [];
         for (let i = 0; i < myStorage.length; i++) {
             if (itemId !== myStorage[i].id) {
@@ -89,10 +90,11 @@ function removeFunc(event) {
 }
 
 function statusFunc(event) {
+    let button = event.target.getAttribute('data-action');
     let myStorage = getTodosFromLocalStorage();
     const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
-    if (event.target.dataset.action === 'checked') {
+    if (button === 'checked') {
         let newStorageArray = [];
         for (let i = 0; i < myStorage.length; i++) {
             if (itemId === myStorage[i].id) {
