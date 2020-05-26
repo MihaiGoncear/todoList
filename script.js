@@ -16,7 +16,8 @@ function setTodosToLocalStorage(todos) {
 };
 
 addButton.addEventListener('click', handleAddTodoItem);
-todoList.addEventListener('click', listButtons);
+todoList.addEventListener('click', statusFunc);
+todoList.addEventListener('click', removeFunc);
 inputText.addEventListener('keyup', countInput);
 
 for (let i = 0; i < myStorage.length; i++) {
@@ -68,8 +69,10 @@ function renderTodoItem(text, status, id) {
     newLi.setAttribute('data-todoid', id);
 }
 
-function listButtons(event) {
+// let removeButton = document.querySelectorAll('[data-action="remove"]');
+// let statusButton = document.querySelectorAll('[data-action="checked"]');
 
+function removeFunc(event) {
     let myStorage = getTodosFromLocalStorage();
     const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
@@ -83,6 +86,11 @@ function listButtons(event) {
         setTodosToLocalStorage(newStorageArray);
         event.target.closest('li').remove();
     };
+}
+
+function statusFunc(event) {
+    let myStorage = getTodosFromLocalStorage();
+    const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
     if (event.target.dataset.action === 'checked') {
         let newStorageArray = [];

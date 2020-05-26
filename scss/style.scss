@@ -19,7 +19,6 @@ h1 {
     justify-content: center;
 }
 
- 
 .todo-container {
     display: flex;
     flex-flow: column;
@@ -100,6 +99,7 @@ h1 {
             margin-right: 10px;
             height: 30px;
         }
+
         button {
             width: 50px;
         }
@@ -163,6 +163,7 @@ h1 {
             height: 30px;
             font-size: 12px;
         }
+
         button {
             width: 40px;
             font-size: 12px;
@@ -178,6 +179,7 @@ h1 {
         margin-bottom: 5px;
         width: 100%;
         padding: 5px 0;
+
         input {
             margin: 0 5px;
         }
