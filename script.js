@@ -72,6 +72,31 @@ function renderTodoItem(text, status, id) {
 // let removeButton = document.querySelectorAll('[data-action="remove"]');
 // let statusButton = document.querySelectorAll('[data-action="checked"]');
 
+// function removeFunc(event) {
+//     let button = event.target.getAttribute('data-action');
+
+//     if (button === 'remove') {
+//         test()
+//         }   
+//     };
+
+// function test(){
+//     let myStorage = getTodosFromLocalStorage();
+//     const itemId = parseInt(event.target.closest('li').dataset.todoid);
+//     let newStorageArray = [];
+
+//     for (let i = 0; i < myStorage.length; i++) {
+//         if (itemId === myStorage[i].id) {
+//             myStorage[i].status = !myStorage[i].status;
+//         }
+//         newStorageArray.push(myStorage[i]);
+//     }
+//     setTodosToLocalStorage(newStorageArray);
+//     event.target.closest('li').remove();
+// }
+
+
+
 function removeFunc(event) {
     let button = event.target.getAttribute('data-action');
     let myStorage = getTodosFromLocalStorage();
