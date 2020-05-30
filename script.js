@@ -16,8 +16,7 @@ function setTodosToLocalStorage(todos) {
 };
 
 addButton.addEventListener('click', handleAddTodoItem);
-todoList.addEventListener('click', statusFunc);
-todoList.addEventListener('click', removeFunc);
+todoList.addEventListener('click', handleRemoveAndStatusButton);
 inputText.addEventListener('keyup', countInput);
 
 for (let i = 0; i < myStorage.length; i++) {
@@ -69,67 +68,41 @@ function renderTodoItem(text, status, id) {
     newLi.setAttribute('data-todoid', id);
 }
 
-// let removeButton = document.querySelectorAll('[data-action="remove"]');
-// let statusButton = document.querySelectorAll('[data-action="checked"]');
-
-// function removeFunc(event) {
-//     let button = event.target.getAttribute('data-action');
-
-//     if (button === 'remove') {
-//         test()
-//         }   
-//     };
-
-// function test(){
-//     let myStorage = getTodosFromLocalStorage();
-//     const itemId = parseInt(event.target.closest('li').dataset.todoid);
-//     let newStorageArray = [];
-
-//     for (let i = 0; i < myStorage.length; i++) {
-//         if (itemId === myStorage[i].id) {
-//             myStorage[i].status = !myStorage[i].status;
-//         }
-//         newStorageArray.push(myStorage[i]);
-//     }
-//     setTodosToLocalStorage(newStorageArray);
-//     event.target.closest('li').remove();
-// }
-
-
-
-function removeFunc(event) {
+function handleRemoveAndStatusButton(event) {
     let button = event.target.getAttribute('data-action');
     let myStorage = getTodosFromLocalStorage();
     const itemId = parseInt(event.target.closest('li').dataset.todoid);
 
     if (button === 'remove') {
-        let newStorageArray = [];
-        for (let i = 0; i < myStorage.length; i++) {
-            if (itemId !== myStorage[i].id) {
-                newStorageArray.push(myStorage[i]);
-            }
-        }
-        setTodosToLocalStorage(newStorageArray);
-        event.target.closest('li').remove();
-    };
+       removeButton(itemId, myStorage);
+       event.target.closest('li').remove();
+    }
+    if (button === 'checked'){
+        statusButton(itemId, myStorage)
+        event.target.closest('li').classList.toggle('complete');
+    }
 }
 
-function statusFunc(event) {
-    let button = event.target.getAttribute('data-action');
-    let myStorage = getTodosFromLocalStorage();
-    const itemId = parseInt(event.target.closest('li').dataset.todoid);
-
-    if (button === 'checked') {
-        let newStorageArray = [];
-        for (let i = 0; i < myStorage.length; i++) {
-            if (itemId === myStorage[i].id) {
-                myStorage[i].status = !myStorage[i].status;
-            }
+function removeButton(itemId, myStorage){
+    let newStorageArray = [];
+    for (let i = 0; i < myStorage.length; i++) {
+        if (itemId !== myStorage[i].id) {
             newStorageArray.push(myStorage[i]);
         }
-        setTodosToLocalStorage(newStorageArray);
-        event.target.closest('li').classList.toggle('complete');
-    };
+    }
+    setTodosToLocalStorage(newStorageArray);
+    
+};
+
+function statusButton(itemId, myStorage) {
+    let newStorageArray = [];
+    for (let i = 0; i < myStorage.length; i++) {
+        if (itemId === myStorage[i].id) {
+            myStorage[i].status = !myStorage[i].status;
+        }
+        newStorageArray.push(myStorage[i]);
+    }
+    setTodosToLocalStorage(newStorageArray);      
 };
 
 function countInput() {
