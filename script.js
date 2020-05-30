@@ -24,9 +24,10 @@ for (let i = 0; i < myStorage.length; i++) {
 };
 
 function handleAddTodoItem() {
+    let dateId = new Date();
     if (!inputText.value) return;
     let myStorage = getTodosFromLocalStorage();
-    let id = myStorage.length;
+    let id = dateId.toISOString();
 
     myStorage.push({
         id: id,
@@ -71,7 +72,7 @@ function renderTodoItem(text, status, id) {
 function handleRemoveAndStatusButton(event) {
     let button = event.target.getAttribute('data-action');
     let myStorage = getTodosFromLocalStorage();
-    const itemId = parseInt(event.target.closest('li').dataset.todoid);
+    const itemId = event.target.closest('li').dataset.todoid;
 
     if (button === 'remove') {
        removeButton(itemId, myStorage);
